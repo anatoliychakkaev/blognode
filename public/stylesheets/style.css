@@ -1,0 +1,41 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+}
+
+.user_bar {
+  width: 120px;
+  float: left;
+}
+.user_bar .avatar {
+  padding: 10px;
+}
+#board {
+  float: left;
+}
+
+#board .head {
+  height: 30px;
+}
+
+#board .head .info {
+  float: right;
+}
+
+#board .head #counter {
+  float: left;
+}
+
+#counter div {
+  float: left;
+}
+
+ul.leaderboard {
+  clear: both;
+  overflow: hidden;
+}
+
+ul.leaderboard li.player {
+  display: inline-block;
+  width: 100px;
+}

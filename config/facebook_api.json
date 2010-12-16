@@ -1,0 +1,16 @@
+{ "dashboard":
+  [ "getNews:           uid,news_ids"
+  , "getGlobalNews:     news_ids"
+  , "incrementCount:    uid"
+  , "decrementCount:    uid"
+  , "setCount:          count,uid"
+  , "getCount:          uid"
+  ]
+, "users":
+  [ "getInfo:           uids, fields, callback"
+  , "hasAppPermission: ext_perm, callback, uid"
+  , "isVerified"
+  , "isAppUser:         callback, uid"
+  , "getStandardinfo:   uids, fields"
+  ]
+}

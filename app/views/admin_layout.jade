@@ -1,0 +1,10 @@
+!!!
+html
+  head
+    title Admin area
+    link(rel='stylesheet', href='/stylesheets/style.css?' + (new Date).getTime())
+    //script( src: 'http://cdn.socket.io/stable/socket.io.js' )
+    script( src: '/socket.io.js' )
+    script( src: '/jquery.js?' + (new Date).getTime())
+    script( src: '/utils.js?' + (new Date).getTime())
+  body!= body

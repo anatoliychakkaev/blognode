@@ -1,0 +1,19 @@
+ul.leaderboard
+  - each player in leaderboard
+    li.player( data-id: player.id )
+      .rank= player.position
+      .avatar
+        img( src: 'https://graph.facebook.com/' + player.id + '/picture' )
+      .name=  player.name.split(' ')[0]
+      .score= player.score
+      button Play
+
+form( action: '/leave_game' )
+
+.cheets( style: 'clear: both' )
+  button#autoplay_random Autoplay
+  button#autoplay_up Autoplay up
+  button#autoplay_down Autoplay down
+  // button#automove_random Automove
+  // button#automove_up Automove up
+  // button#automove_down Automove down
