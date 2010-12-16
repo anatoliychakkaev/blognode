@@ -19,7 +19,6 @@ app.configure(function(){
     app.use(express.session({ store: store, key: session_key }));
     app.use(express.bodyDecoder());
     app.use(express.methodOverride());
-    app.use(facebooker.connect);
     app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
     app.use(app.router);
 });
@@ -33,8 +32,6 @@ app.configure('production', function(){
 });
 
 // Controller
-
-var create_routes = require('./lib/routing.js').create_routes;
 
 // Routes
 
