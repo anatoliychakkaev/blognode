@@ -7,6 +7,8 @@ var express = require('express'),
     RedisStore = require('connect-redis'),
     store = new RedisStore;
 
+require('./lib/date_format.js');
+
 var session_key = 'connect.sidw';
 
 // Configuration
@@ -33,7 +35,21 @@ app.configure('production', function(){
 
 // Controller
 
+var m = require('./lib/models.js');
+m.Record.connection.select(2);
+
 // Routes
+
+app.get('/', function (req, res) {
+    m.Record.all_instances(function (records) {
+        res.render('index.jade', {
+            locals: {
+                title: 'Blog about javascript, nodejs and related technologies',
+                records: records
+            }
+        });
+    });
+});
 
 // Only listen on $ node app.js
 

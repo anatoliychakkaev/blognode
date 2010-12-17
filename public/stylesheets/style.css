@@ -1,8 +1,59 @@
 body {
-  padding: 50px;
+  padding: 0px;
+  margin: 0;
   font: 14px "Verdana", "Helvetica Nueue", Arial, sans-serif;
+
 }
-#wrap {
-  width: 700px;
+
+#wrapper {
+  width: 600px;
   margin: 0 auto;
 }
+
+.header {
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
+.header h1 {
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.header h2 {
+  font-size: 12px;
+  color: lightgray;
+}
+
+.record .side {
+  position: relative;
+  text-align: right;
+  float: left;
+  width: 80px;
+}
+
+.record .content {
+  margin-left: 100px;
+}
+
+/*
+#footer div {
+  height: 100px;
+}
+
+#footer .left_bg {
+  background: url(http://static4.grsites.com/archive/textures/lgrey/lgrey041.jpg) top right;
+}
+
+#footer .right_bg {
+  background: url(http://static2.grsites.com/archive/textures/lgrey/lgrey043.jpg) top left repeat-x;
+  margin-left: 50%;
+}
+
+#footer .footer_center {
+  height: 80px;
+  background: black;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: -100px;
+}
+*/
