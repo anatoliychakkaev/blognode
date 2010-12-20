@@ -13,6 +13,6 @@ html
       .content!= body
         :javascript
           | wmd_options = {
-          |   // output: "HTML"
+          |    output: "markdown"
           | };
-        script( src: '/javascripts/wmd/wmd.js?' + (new Date).getTime())
+        script( src: '/javascripts/wmd/wmd.js' )

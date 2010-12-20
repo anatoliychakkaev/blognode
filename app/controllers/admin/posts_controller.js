@@ -10,6 +10,7 @@ var ctl = {
         });
     },
     create: function (req, next) {
+        console.log(req.body);
         m.Record.create(req.body, function () {
             next('redirect', '/admin/posts');
         });
