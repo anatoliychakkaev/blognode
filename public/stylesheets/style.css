@@ -12,16 +12,32 @@ body {
 
 .header {
   margin-left: 100px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .header h1 {
   font-weight: 500;
-  font-size: 17px;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+.header h1 a, .header h1 a:visited {
+  color: #479;
+  text-decoration: none;
 }
 
 .header h2 {
-  font-size: 12px;
+  font-size: 10px;
   color: lightgray;
+  margin: 5px;
+}
+
+.record {
+  clear: both;
+}
+
+.record h3.title {
+  color: #479;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .record .side {
@@ -29,10 +45,16 @@ body {
   text-align: right;
   float: left;
   width: 80px;
+  font-size: 17px;
+  line-height: 21px;
 }
 
 .record .content {
   margin-left: 100px;
+}
+
+.record .content .preview {
+  margin-bottom: 10px;
 }
 
 /*
