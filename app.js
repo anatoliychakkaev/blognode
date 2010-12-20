@@ -15,10 +15,10 @@ var session_key = 'connect.sidw';
 
 app.configure(function(){
     app.use(express.staticProvider(__dirname + '/public'));
-    //app.use(express.logger());
+    app.use(express.logger());
     app.set('views', __dirname + '/app/views');
     app.use(express.cookieDecoder());
-    app.use(express.session({ store: store, key: session_key }));
+    // app.use(express.session({ store: store, key: session_key }));
     app.use(express.bodyDecoder());
     app.use(express.methodOverride());
     app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
@@ -33,19 +33,38 @@ app.configure('production', function(){
     app.use(express.errorHandler());
 });
 
+// Load config
+global.config = require('yaml').eval(
+    require('fs')
+    .readFileSync('config/app_config.yml')
+    .toString()
+)[app.settings.env];
+
 // Controller
 
 var m = require('./lib/models.js');
-m.Record.connection.select(2);
+require('./lib/routing.js').add_routes(app);
 
-// Routes
+//m.Record.connection.select(2);
 
 app.get('/', function (req, res) {
     m.Record.all_instances(function (records) {
         res.render('index.jade', {
             locals: {
                 title: 'Blog about javascript, nodejs and related technologies',
-                records: records
+                records: records.reverse()
+            }
+        });
+    });
+});
+
+app.get('/:id', function (req, res) {
+    m.Record.find(parseInt(req.params.id, 10), function () {
+        this.content = require('markdown-js').makeHtml(this.content);
+        res.render('show.jade', {
+            locals: {
+                title: this.title,
+                post: this
             }
         });
     });
