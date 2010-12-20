@@ -1,0 +1,10 @@
+- each record in records
+  .record
+    .side!= record.created_at.format('d mmm<br/>yyyy')
+    .content
+      h3.title
+        a( href: '/admin/posts/' + record.id + '/edit' )= record.title
+      .preview!= record.preview
+.create
+  form( action: '', method: 'POST' )
+    .fields!= partial('post/form', {object: post, as: 'post'})

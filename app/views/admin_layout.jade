@@ -3,8 +3,16 @@ html
   head
     title Admin area
     link(rel='stylesheet', href='/stylesheets/style.css?' + (new Date).getTime())
-    //script( src: 'http://cdn.socket.io/stable/socket.io.js' )
-    script( src: '/socket.io.js' )
-    script( src: '/jquery.js?' + (new Date).getTime())
     script( src: '/utils.js?' + (new Date).getTime())
-  body!= body
+  body
+    #wrapper
+      .header
+        h1
+          a( href: '/', title: 'Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript' ) Узел JS*
+        h2 * JavaScript — объектно-ориентированный скриптовый язык программирования
+      .content!= body
+        :javascript
+          | wmd_options = {
+          |   // output: "HTML"
+          | };
+        script( src: '/javascripts/wmd/wmd.js?' + (new Date).getTime())

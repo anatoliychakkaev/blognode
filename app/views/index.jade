@@ -2,5 +2,6 @@
   .record
     .side!= record.created_at.format('d mmm<br/>yyyy')
     .content
-      h3= record.title
+      h3.title
+        a( href: '/' + record.link() )= record.title
       .preview!= record.preview

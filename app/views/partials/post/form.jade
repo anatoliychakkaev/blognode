@@ -1,0 +1,15 @@
+input( type: 'hidden', name: 'id', value: post.id )
+.field
+  label( for: 'title' ) Title
+  br
+  input( name: 'title', id: 'title', value: post.title )
+.field
+  label( for: 'preview' ) Preview
+  br
+  textarea.wmd-ignore( name: 'preview', id: 'preview', cols: 80, rows: 6 )!= post.preview
+.field
+  label( for: 'content' ) Content
+  br
+  textarea( name: 'content', id: 'content', cols: 80, rows: 30 )!= post.content
+.submit
+  input( type: 'submit' ) Create post

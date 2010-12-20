@@ -2,14 +2,16 @@
 html
   head
     title= title
+    script( type: "text/javascript", src: "/javascripts/highlight/highlight.pack.js" )
+    :javascript
+      | hljs.tabReplace = '    ';
+      | hljs.initHighlightingOnLoad();
     link(rel='stylesheet', href='/stylesheets/style.css?' + (new Date).getTime())
+    link(rel='stylesheet', href='/javascripts/highlight/styles/github.css')
   body
     #wrapper
       .header
-        h1 node blog
-        h2 javascripts, nodes, codes
+        h1
+          a( href: '/', title: 'Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript' ) Узел JS*
+        h2 * JavaScript — объектно-ориентированный скриптовый язык программирования
       .content!= body
-    #footer
-      .left_bg
-        .right_bg
-        .footer_center
