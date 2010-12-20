@@ -1,5 +1,5 @@
 .record
-  .side= post.created_at
+  .side!= post.created_at.format('d mmm<br/>yyyy')
   .content
     h3.title= post.title
     .preview!= post.preview
