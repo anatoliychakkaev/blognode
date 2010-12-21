@@ -34,6 +34,7 @@ var ctl = {
     },
     edit: function (req, next) {
         m.Record.find(req.params.id, function () {
+            this.localize(req.locale);
             next('render', { post: this, locale: req.locale });
         });
     },

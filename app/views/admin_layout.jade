@@ -10,6 +10,12 @@ html
         h1
           a( href: '/', title: 'Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript' ) Узел JS*
         h2 * JavaScript — объектно-ориентированный скриптовый язык программирования
+        - if (locale == 'en')
+          .locale_info Current locale is en, 
+            a( href: '?locale=ru') switch to ru
+        - else
+          .locale_info Current locale is ru,
+            a( href: '?locale=en') switch to en
       .content!= body
         :javascript
           | wmd_options = {
