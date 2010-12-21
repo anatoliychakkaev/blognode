@@ -14,7 +14,7 @@ input( type: 'hidden', name: 'id', value: post.id )
 .field
   label( for: 'content' ) Content
   br
-  textarea( name: 'content', id: 'content', cols: 80, rows: 30, style: 'margin-left: -50%' )!= post.content
-  .wmd-preview( style: 'width: 500px; margin-right: -270px; float: right; height: 520px; overflow: auto;' )
+  textarea( name: 'content', id: 'content', cols: 80, rows: 30, style: 'margin-left: -40%' )!= post.content
+  .wmd-preview( style: 'width: 650px; margin-right: -270px; float: right; height: 520px; overflow: auto;' )
 .submit
   input( type: 'submit' ) Create post

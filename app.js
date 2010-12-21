@@ -29,6 +29,10 @@ app.configure(function(){
             return;
         }
         req.locale = 'en';
+        if (!req.headers['accept-language']) {
+            next();
+            return;
+        }
         req.headers['accept-language'].split(',').forEach(function (val, index, arr) {
             val = val.split(';')[0];
             if (val == 'ru-RU' || val == 'ru') {
@@ -71,7 +75,9 @@ app.get('/', function (req, res) {
         res.render('index.jade', {
             locals: {
                 title: 'Blog about javascript, nodejs and related technologies',
-                records: records
+                records: records,
+                meta_description: 'Blog about javascript, nodejs and related technologies, code samples, test driven development',
+                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load'
             }
         });
     });
@@ -84,7 +90,9 @@ app.get('/:id', function (req, res) {
         res.render('show.jade', {
             locals: {
                 title: this.title,
-                post: this
+                post: this,
+                meta_description: this.preview,
+                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load'
             }
         });
     });

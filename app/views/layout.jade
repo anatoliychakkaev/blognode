@@ -2,6 +2,8 @@
 html
   head
     title= title
+    meta( name: 'description', content: meta_description )
+    meta( name: 'keywords', content: meta_keywords )
     script( type: "text/javascript", src: "/javascripts/highlight/highlight.pack.js" )
     :javascript
       | hljs.tabReplace = '    ';
