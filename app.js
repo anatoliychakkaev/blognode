@@ -48,7 +48,7 @@ require('./lib/routing.js').add_routes(app);
 //m.Record.connection.select(2);
 
 app.get('/', function (req, res) {
-    m.Record.all_instances(function (records) {
+    m.Record.all_instances({order: 'created_at'}, function (records) {
         res.render('index.jade', {
             locals: {
                 title: 'Blog about javascript, nodejs and related technologies',

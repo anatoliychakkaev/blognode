@@ -34,10 +34,11 @@ body {
   clear: both;
 }
 
-.record h3.title {
+.record h3.title a, .record h3.title a:visited{
   color: #479;
   font-size: 17px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 .record .side {
@@ -47,6 +48,7 @@ body {
   width: 80px;
   font-size: 17px;
   line-height: 21px;
+  color: gray;
 }
 
 .record .content {
