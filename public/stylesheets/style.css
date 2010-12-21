@@ -34,7 +34,7 @@ body {
   clear: both;
 }
 
-.record h3.title a, .record h3.title a:visited{
+.record h3.title, .record h3.title a, .record h3.title a:visited{
   color: #479;
   font-size: 17px;
   font-weight: 500;
