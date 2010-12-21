@@ -10,7 +10,7 @@ var ctl = {
             records.forEach(function (r) {
                 r.localize(req.locale);
             });
-            next('render', { records: records });
+            next('render', { records: records, locale: req.locale });
         });
     },
     create: function (req, next) {
