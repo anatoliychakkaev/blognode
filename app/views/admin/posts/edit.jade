@@ -1,2 +1,2 @@
-form( action: '/admin/posts/update', method: 'POST' )
+form( action: '/admin/posts/update?locale=' + locale, method: 'POST' )
   !=partial('post/form', {object: post, as: 'post'})

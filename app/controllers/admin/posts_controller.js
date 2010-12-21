@@ -5,31 +5,36 @@ var ctl = {
         layout: 'admin'
     },
     index: function (req, next) {
-        m.Record.all_instances(function (records) {
-            next('render', { records: records.reverse(), post: new m.Record });
+        m.Record.all_instances({order: 'created_at'}, function (records) {
+            records.reverse();
+            records.forEach(function (r) {
+                r.localize(req.locale);
+            });
+            next('render', { records: records });
         });
     },
     create: function (req, next) {
         console.log(req.body);
-        m.Record.create(req.body, function () {
+        m.Record.create_localized(req.body, function () {
             next('redirect', '/admin/posts');
         });
     },
     new: function (req, next) {
+        next('render', { post: new m.Record, locale: req.locale });
     },
     destroy: function (req, next) {
     },
     update: function (req, next) {
         console.log(req.body);
         m.Record.find(req.body.id, function () {
-            this.update_attributes(req.body, function () {
+            this.save_localized(req.locale, req.body, function () {
                 next('redirect', '/admin/posts');
             });
         });
     },
     edit: function (req, next) {
         m.Record.find(req.params.id, function () {
-            next('render', { post: this });
+            next('render', { post: this, locale: req.locale });
         });
     },
     show: function (req, next) {

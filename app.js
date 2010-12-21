@@ -22,6 +22,21 @@ app.configure(function(){
     app.use(express.bodyDecoder());
     app.use(express.methodOverride());
     app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
+    app.use(function set_locale(req, res, next) {
+        if (req.query.locale) {
+            req.locale = req.query.locale == 'ru' ? 'ru' : 'en';
+            next();
+            return;
+        }
+        req.locale = 'en';
+        req.headers['accept-language'].split(',').forEach(function (val, index, arr) {
+            val = val.split(';')[0];
+            if (val == 'ru-RU' || val == 'ru') {
+                req.locale = 'ru';
+            }
+        });
+        next();
+    });
     app.use(app.router);
 });
 
@@ -49,10 +64,14 @@ require('./lib/routing.js').add_routes(app);
 
 app.get('/', function (req, res) {
     m.Record.all_instances({order: 'created_at'}, function (records) {
+        records.reverse();
+        records.forEach(function (r) {
+            r.localize(req.locale);
+        });
         res.render('index.jade', {
             locals: {
                 title: 'Blog about javascript, nodejs and related technologies',
-                records: records.reverse()
+                records: records
             }
         });
     });
@@ -60,6 +79,7 @@ app.get('/', function (req, res) {
 
 app.get('/:id', function (req, res) {
     m.Record.find(parseInt(req.params.id, 10), function () {
+        this.localize(req.locale);
         this.content = require('markdown-js').makeHtml(this.content);
         res.render('show.jade', {
             locals: {
