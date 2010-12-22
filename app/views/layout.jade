@@ -22,7 +22,12 @@ html
   body
     #wrapper
       .header
-        h1
-          a( href: '/', title: 'Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript' ) Узел JS*
-        h2 * JavaScript — объектно-ориентированный скриптовый язык программирования
+        - if (locale == 'ru' )
+          h1
+            a( href: '/', title: 'Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript' ) Узел JS*
+          h2 * JavaScript — объектно-ориентированный скриптовый язык программирования
+        - else
+          h1
+            a( href: '/', title: 'Node.js is an evented I/O framework for the V8 JavaScript engine') Node JS*
+          h2 * JavaScript &#151; prototype-based object-oriented scripting language
       .content!= body

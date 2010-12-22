@@ -67,6 +67,7 @@ require('./lib/routing.js').add_routes(app);
 //m.Record.connection.select(2);
 
 app.get('/', function (req, res) {
+    console.log(req.headers);
     m.Record.all_instances({order: 'created_at'}, function (records) {
         records.reverse();
         records.forEach(function (r) {
@@ -77,7 +78,8 @@ app.get('/', function (req, res) {
                 title: 'Blog about javascript, nodejs and related technologies',
                 records: records,
                 meta_description: 'Blog about javascript, nodejs and related technologies, code samples, test driven development',
-                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load'
+                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load',
+                locale: req.locale
             }
         });
     });
@@ -92,7 +94,8 @@ app.get('/:id', function (req, res) {
                 title: this.title,
                 post: this,
                 meta_description: this.preview,
-                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load'
+                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load',
+                locale: req.locale
             }
         });
     });
