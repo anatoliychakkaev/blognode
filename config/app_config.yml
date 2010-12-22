@@ -1,5 +1,5 @@
 production:
   restrict_access: 1
-  admin: 'admin:74xxkpet'
+  admin: 'admin:secret'
 development:
   restrict_access: 0
