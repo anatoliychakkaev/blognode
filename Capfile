@@ -33,6 +33,13 @@ namespace :deploy do
     run "#{try_sudo :as => 'root'} restart #{application} || #{try_sudo :as => 'root'} start #{application}"
   end
 
+  desc "Symlink config files"
+  task :symlink_configs, :roles => :app do
+    %w[app_config.yml].each do |f|
+      run "ln -sf #{shared_path}/config/#{f} #{release_path}/config/#{f}"
+    end
+  end
+
   task :create_deploy_to_with_sudo, :roles => :app do
     run "#{try_sudo :as => 'root'} mkdir -p #{deploy_to}"
     run "#{try_sudo :as => 'root'} chown #{admin_runner}:#{admin_runner} #{deploy_to}"
