@@ -12,3 +12,17 @@ task('routes', [], function () {
         put: print('put')
     });
 });
+
+namespace('packages', function () {
+    desc('Check installed packages');
+    task('check', {}, function () {
+        var npm = require('npm');
+        npm.load({}, function (err) {
+            if (err) throw err;
+            npm.commands.ls(['installed'], function (err, packages) {
+                var requirements = JSON.parse(require('fs').readFileSync('config/requirements.json'));
+                console.log(requirements);
+            });
+        });
+    });
+});

@@ -1,3 +1,3 @@
 .create
-  form( action: '?locale=' + locale, method: 'POST' )
+  form( action: '/admin/posts?locale=' + locale, method: 'POST' )
     .fields!= partial('post/form', {object: post, as: 'post'})

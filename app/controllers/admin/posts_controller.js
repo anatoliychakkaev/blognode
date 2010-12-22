@@ -15,7 +15,7 @@ var ctl = {
     },
     create: function (req, next) {
         console.log(req.body);
-        m.Record.create_localized(req.body, function () {
+        m.Record.create_localized(req.locale, req.body, function () {
             next('redirect', '/admin/posts');
         });
     },

@@ -62,6 +62,7 @@ global.config = require('yaml').eval(
 // Controller
 
 var m = require('./lib/models.js');
+global.m = m;
 require('./lib/routing.js').add_routes(app);
 
 //m.Record.connection.select(2);

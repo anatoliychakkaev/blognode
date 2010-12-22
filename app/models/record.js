@@ -41,7 +41,7 @@ function localize_data (locale, data) {
 Record.prototype.save_localized = function (locale, data, callback) {
     this.save(localize_data(locale, data), callback);
 };
-Record.prototype.create_localized = function (locale, data, callback) {
-    this.save(localize_data(locale, data), callback);
+Record.create_localized = function (locale, data, callback) {
+    return Record.create(localize_data(locale, data), callback);
 };
 exports.Record = Record;
