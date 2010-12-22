@@ -102,6 +102,16 @@ app.get('/:id', function (req, res) {
     });
 });
 
+app.get('/sitemap.txt', function (req, res) {
+    m.Record.all_instances({order: 'created_at'}, function (records) {
+        var root = 'http://node-js.ru/', sitemap = [root];
+        records.forEach(function (post) {
+            sitemap.push(root + post.link() + '?locale=ru');
+            sitemap.push(root + post.link() + '?locale=en');
+        });
+        res.send(sitemap.join("\n"));
+    });
+});
 // Only listen on $ node app.js
 
 if (!module.parent) {
