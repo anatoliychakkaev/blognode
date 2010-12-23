@@ -1,5 +1,15 @@
+:javascript
+  | (function() {
+  | var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
+  | s.type = 'text/javascript';
+  | s.async = true;
+  | s.src = 'http://widgets.digg.com/buttons.js';
+  | s1.parentNode.insertBefore(s, s1);
+  | })();
+
 .record
   .side!= post.created_at.format('d mmm<br/>yyyy')
+    a.DiggThisButton.DiggMedium( rev: 'news, tech_news' )
   .content
     h3.title= post.title
     .preview!= post.preview
