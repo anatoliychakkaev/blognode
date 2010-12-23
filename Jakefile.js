@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 desc('Draw routes');
 task('routes', [], function () {
     function print (method) {
@@ -13,16 +15,26 @@ task('routes', [], function () {
     });
 });
 
-namespace('packages', function () {
-    desc('Check installed packages');
-    task('check', {}, function () {
-        var npm = require('npm');
-        npm.load({}, function (err) {
-            if (err) throw err;
-            npm.commands.ls(['installed'], function (err, packages) {
-                var requirements = JSON.parse(require('fs').readFileSync('config/requirements.json'));
-                console.log(requirements);
+desc('Check and install required packages');
+task('depends', [], function () {
+    var npm = require('npm'), cb_counter = 0, wait_for_all = function () {
+        if (--cb_counter === 0) complete();
+    };
+    npm.load({}, function (err) {
+        if (err) throw err;
+        npm.commands.ls(['installed'], true, function (err, packages) {
+            var requirements = JSON.parse(fs.readFileSync('config/requirements.json'));
+            requirements.forEach(function (package) {
+                cb_counter += 1;
+                if (packages[package]) {
+                    console.log('Package ' + package + ' is already installed');
+                    wait_for_all();
+                } else {
+                    npm.commands.install([package], function (err, data) {
+                        wait_for_all();
+                    });
+                }
             });
         });
     });
-});
+}, true);

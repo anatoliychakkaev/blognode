@@ -40,6 +40,11 @@ namespace :deploy do
     end
   end
 
+  desc "Check required packages and install if packages are not installed"
+  task :check_packages, roles => :app do
+    run "cd #{current_path} && jake depends"
+  end
+
   task :create_deploy_to_with_sudo, :roles => :app do
     run "#{try_sudo :as => 'root'} mkdir -p #{deploy_to}"
     run "#{try_sudo :as => 'root'} chown #{admin_runner}:#{admin_runner} #{deploy_to}"
@@ -79,4 +84,4 @@ end
 
 before 'deploy:setup', 'deploy:create_deploy_to_with_sudo'
 after 'deploy:setup', 'deploy:write_upstart_script'
-after "deploy:finalize_update", "deploy:update_submodules"
+after "deploy:finalize_update", "deploy:update_submodules", "deploy:symlink_configs", "deploy:check_packages"
