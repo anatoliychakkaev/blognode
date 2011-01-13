@@ -16,7 +16,14 @@ function basic_auth (req, res, next) {
 }
 
 exports.routes = function (map) {
+    map.get('/', 'posts#index');
+    map.get(':id', 'posts#show');
+    map.get('sitemap.txt', 'posts#map');
+
     map.namespace('admin', function (admin) {
-        admin.resources('posts', {middleware: basic_auth});
+        admin.resources('posts', {middleware: basic_auth, except: ['show']}, function (post) {
+            // post.resources('comments');
+            // post.get('likes', 'posts#likes')
+        });
     })
 };

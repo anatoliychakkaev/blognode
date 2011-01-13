@@ -1,0 +1,7 @@
+<div class="create">
+  <!--form action="<%= path_to.admin_posts({'locale': locale}) %>" method='POST'-->
+  <% form_for(buf, post, {action: admin_posts({locale: locale})}, function (form) { %>
+    <div class="fields"><%- partial('post/form', {object: post, as: 'post', locals: {form: form}}) %></div>
+  <% }); %>
+  <!--/form-->
+</div>

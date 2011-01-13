@@ -1,0 +1,40 @@
+<!DOCTYPE html5>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name='description' content='<%= meta_description %>'>
+    <meta name='keywords' content="<%= meta_keywords %>">
+    <%- stylesheet_link_tag('style') %>
+    <%- javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 'highlight/highlight.pack', 'application') %>
+
+    <script>
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20355413-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <link rel='stylesheet' href='/javascripts/highlight/styles/github.css' />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="header">
+        <% if (locale == 'ru' ) { %>
+          <h1><a href='/' title='Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript'> Узел JS*</a></h1>
+          <h2>* JavaScript — объектно-ориентированный скриптовый язык программирования</h2>
+        <% } else { %>
+          <h1><a href='/' title='Node.js is an evented I/O framework for the V8 JavaScript engine'>Node JS*</a></h1>
+          <h2>* JavaScript &#151; prototype-based object-oriented scripting language</h2>
+        <% } %>
+      </div>
+      <div class="content"><%- body %></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<h3 style='float: right'>
+  <%- link_to("Write new post", new_admin_post) %>
+</h3>
+<% records.forEach(function (record) { %>
+<div class="record">
+  <div class="side"><%- record.created_at.format('d mmm<br />yyyy') %></div>
+  <div class="content">
+    <h3 class="title">
+      <%- link_to(record.title, edit_admin_post(record)) %>
+    </h3>
+    <div class="preview"><%- record.preview %></div>
+  </div>
+</div>
+<% }); %>

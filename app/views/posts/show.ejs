@@ -1,0 +1,31 @@
+<script>
+  (function() {
+    var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = 'http://widgets.digg.com/buttons.js';
+    s1.parentNode.insertBefore(s, s1);
+  })();
+</script>
+
+<div class="record">
+  <div class="side"><%- post.created_at.format('d mmm<br/>yyyy') %>
+    <a class="DiggThisButton.DiggMedium( rev: 'news, tech_news' )"></a>
+  </div>
+  <div class="content">
+    <h3 class="title"><%- post.title %></h3>
+    <div class="preview"><%- post.preview %></div>
+    <div class="post"><%- post.content %></div>
+    <div class="discussion">
+      <div id="disqus_thread"></div>
+      <script>
+        var disqus_shortname = 'nodejs', disqus_identifier = "<%= post.id + locale %>";
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+  </div>
+</div>

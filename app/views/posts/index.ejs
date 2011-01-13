@@ -1,0 +1,11 @@
+<% records.forEach(function (record) { %>
+<div class="record">
+  <div class="side"><%- record.created_at.format('d mmm<br/>yyyy') %></div>
+  <div class="content">
+    <h3 class="title">
+      <a href='/<%= record.link() %>'><%- record.title %></a>
+    </h3>
+    <div class="preview"><%- record.preview %></div>
+  </div>
+</div>
+<% }); %>

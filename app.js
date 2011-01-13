@@ -17,6 +17,7 @@ app.configure(function(){
     app.use(express.staticProvider(__dirname + '/public'));
     app.use(express.logger());
     app.set('views', __dirname + '/app/views');
+    app.set('view engine', 'ejs');
     app.use(express.cookieDecoder());
     // app.use(express.session({ store: store, key: session_key }));
     app.use(express.bodyDecoder());
@@ -61,57 +62,10 @@ global.config = require('yaml').eval(
 
 // Controller
 
-var m = require('./lib/models.js');
-global.m = m;
-require('./lib/routing.js').add_routes(app);
+require('express-on-railway').init(__dirname, app);
 
 //m.Record.connection.select(2);
 
-app.get('/', function (req, res) {
-    console.log(req.headers);
-    m.Record.all_instances({order: 'created_at'}, function (records) {
-        records.reverse();
-        records.forEach(function (r) {
-            r.localize(req.locale);
-        });
-        res.render('index.jade', {
-            locals: {
-                title: 'Blog about javascript, nodejs and related technologies',
-                records: records,
-                meta_description: 'Blog about javascript, nodejs and related technologies, code samples, test driven development',
-                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load',
-                locale: req.locale
-            }
-        });
-    });
-});
-
-app.get('/:id', function (req, res) {
-    m.Record.find(parseInt(req.params.id, 10), function () {
-        this.localize(req.locale);
-        this.content = require('markdown-js').makeHtml(this.content);
-        res.render('show.jade', {
-            locals: {
-                title: this.title,
-                post: this,
-                meta_description: this.preview,
-                meta_keywords: 'nodejs, javascript, tdd, bdd, redis, canvas, express, nodeunit, jake, high load',
-                locale: req.locale
-            }
-        });
-    });
-});
-
-app.get('/sitemap.txt', function (req, res) {
-    m.Record.all_instances({order: 'created_at'}, function (records) {
-        var root = 'http://node-js.ru/', sitemap = [root];
-        records.forEach(function (post) {
-            sitemap.push(root + post.link() + '?locale=ru');
-            sitemap.push(root + post.link() + '?locale=en');
-        });
-        res.send(sitemap.join("\n"));
-    });
-});
 // Only listen on $ node app.js
 
 if (!module.parent) {

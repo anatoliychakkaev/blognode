@@ -1,0 +1,35 @@
+<!DOCTYPE html5>
+<html>
+  <head>
+    <title>Admin area</title>
+    <script type="text/javascript" src="/javascripts/highlight/highlight.pack.js"></script>
+    <script src='/utils.js?<%= (new Date).getTime() %>'></script>
+    <script>
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad();
+    </script>
+    <link rel='stylesheet' href='/stylesheets/style.css?<%= (new Date).getTime() %>'/>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="header">
+        <% if (locale == 'ru' ) { %>
+          <h1><a href='/' title='Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript'> Узел JS*</a></h1>
+          <h2>* JavaScript — объектно-ориентированный скриптовый язык программирования</h2>
+          <div class="locale_info"> Current locale is ru, <a href='?locale=en'>switch to en</a></div>
+        <% } else { %>
+          <h1><a href='/' title='Node.js is an evented I/O framework for the V8 JavaScript engine'>Node JS*</a></h1>
+          <h2>* JavaScript &#151; prototype-based object-oriented scripting language</h2>
+          <div class="locale_info"> Current locale is en, <a href='?locale=ru'>switch to ru</a></div>
+        <% } %>
+      </div>
+      <div class="content"><%- body %></div>
+    </div>
+    <script>
+      wmd_options = {
+         output: "markdown"
+      };
+    </script>
+    <script src='/javascripts/wmd/wmd.js'></script>
+  </body>
+</html>

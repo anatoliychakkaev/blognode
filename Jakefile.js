@@ -4,14 +4,44 @@ desc('Draw routes');
 task('routes', [], function () {
     function print (method) {
         return function () {
-            console.log(method + "\t" + arguments[0]);
+            //console.log(method + "\t" + arguments[0]);
         };
     }
-    require('./lib/routing').add_routes({
+    function add_spaces (str, len, to_start) {
+        var str_len = str.length;
+        for (var i = str_len; i < len; i += 1) {
+            if (!to_start) {
+                str += ' ';
+            } else {
+                str = ' ' + str;
+            }
+        }
+        return str;
+    }
+    var mapper = require('express-on-railway').init(__dirname, {
         get: print('get'),
         post: print('post'),
         delete: print('delete'),
         put: print('put')
+    }).routes;
+    var dump = mapper.dump();
+
+    var max_len = 0, helper_max_len = 0;
+    dump.forEach(function (data) {
+        if (data.path.length > max_len) {
+            max_len = data.path.length;
+        }
+        if (data.helper.length > helper_max_len) {
+            helper_max_len = data.helper.length;
+        }
+    });
+    dump.forEach(function (data) {
+        console.log(
+            add_spaces(data.helper, helper_max_len + 1, true) + ' ' +
+            data.method.toUpperCase() + "\t" +
+            add_spaces(data.path, max_len + 1) +
+            data.file + "#" + data.action
+        );
     });
 });
 

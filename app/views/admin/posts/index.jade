@@ -1,9 +1,14 @@
-h3( style: 'float: right' )
-  a( href: '/admin/posts/new' ) Write new post
-- each record in records
-  .record
-    .side!= record.created_at.format('d mmm<br/>yyyy')
-    .content
-      h3.title
-        a( href: '/admin/posts/' + record.id + '/edit' )= record.title
-      .preview!= record.preview
+<h3 style='float: right'>
+  <a href='/admin/posts/new'>Write new post</a>
+</h3>
+<% for (var i in records) { var record = record[i]; %>
+<div class="record">
+  <div class="side"><%= record.created_at.format('d mmm<br />yyyy') %></div>
+  <div class="content">
+    <h3 class="title">
+      <a href='<%= path_to.admin_post_edit(record) %>'><%= record.title %></a>
+    </h3>
+    <div class="preview"><%= record.preview %></div>
+  </div>
+</div>
+<% } %>

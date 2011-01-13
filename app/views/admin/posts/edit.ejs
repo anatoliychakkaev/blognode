@@ -1,0 +1,3 @@
+<% form_for(buf, post, {action: admin_post(post, {locale: locale})}, function (form) { %>
+  <%- partial('post/form', {object: post, as: 'post', locals: {form: form}}) %>
+<% }); %>

@@ -1,2 +1,3 @@
-form( action: '/admin/posts/update?locale=' + locale, method: 'POST' )
+form( action: path_to.admin_post(post, {'locale': locale}), method: 'POST' )
+  input( type: 'hidden', name: '_method', value: 'put' )
   !=partial('post/form', {object: post, as: 'post'})
