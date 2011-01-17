@@ -53,18 +53,9 @@ app.configure('production', function(){
     app.use(express.errorHandler());
 });
 
-// Load config
-global.config = require('yaml').eval(
-    require('fs')
-    .readFileSync('config/app_config.yml')
-    .toString()
-)[app.settings.env];
-
 // Controller
 
 require('express-on-railway').init(__dirname, app);
-
-//m.Record.connection.select(2);
 
 // Only listen on $ node app.js
 
