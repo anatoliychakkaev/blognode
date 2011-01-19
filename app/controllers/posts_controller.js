@@ -2,6 +2,9 @@ module.exports = {
     index: function (req, next) {
         Record.all_instances({order: 'created_at'}, function (records) {
             records.reverse();
+            records = records.filter(function (post) {
+                return !!post.published;
+            });
             records.forEach(function (r) {
                 r.localize(req.locale);
             });
@@ -30,7 +33,9 @@ module.exports = {
     map: function (req, next) {
         Record.all_instances({order: 'created_at'}, function (records) {
             var root = 'http://node-js.ru/', sitemap = [root];
-            records.forEach(function (post) {
+            records.filter(function (post) {
+                return !!post.published;
+            }).forEach(function (post) {
                 sitemap.push(root + post.link() + '?locale=ru');
                 sitemap.push(root + post.link() + '?locale=en');
             });

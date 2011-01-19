@@ -8,8 +8,10 @@ Record.attributes = {
     title: 'string',
     preview: 'string',
     content: 'string',
-    slug: 'string'
+    slug: 'string',
+    published: 'int'
 };
+
 localized_fields.forEach(function (attr) {
     locales.forEach(function (locale) {
         Record.attributes[attr + '-' + locale] = Record.attributes[attr];

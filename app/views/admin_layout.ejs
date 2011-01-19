@@ -2,13 +2,12 @@
 <html>
   <head>
     <title>Admin area</title>
-    <script type="text/javascript" src="/javascripts/highlight/highlight.pack.js"></script>
-    <script src='/utils.js?<%= (new Date).getTime() %>'></script>
+    <%- javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 'rails', 'highlight/highlight.pack', 'application') %>
     <script>
       hljs.tabReplace = '    ';
       hljs.initHighlightingOnLoad();
     </script>
-    <link rel='stylesheet' href='/stylesheets/style.css?<%= (new Date).getTime() %>'/>
+    <%- stylesheet_link_tag('style') %>
   </head>
   <body>
     <div id="wrapper">

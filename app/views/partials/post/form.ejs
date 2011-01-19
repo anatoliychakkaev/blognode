@@ -16,8 +16,12 @@
 <div class="field">
   <%- form.label('content') %>
   <br />
-  <%- form.textarea('content', {cols: 80, rows: 30, style: 'margin-left: -40%;'}) %>
+  <%- form.textarea('content', {cols: 80, rows: 27, style: 'margin-left: -40%;'}) %>
   <div class="wmd-preview" style='width: 650px; margin-right: -270px; float: right; height: 520px; overflow: auto;'></div>
+</div>
+<div class="field">
+  <%- form.checkbox('published') %>
+  <%- form.label('published') %>
 </div>
 <div class="submit">
   <%- form.submit('Save') %>

@@ -12,7 +12,9 @@ module.exports = {
         });
     },
     create: function (req, next) {
-        Record.create_localized(req.locale, req.body, function () {
+        var data = req.body;
+        data.published = data.published ? 1 : 0;
+        Record.create_localized(req.locale, data, function () {
             next('redirect', path_to.admin_posts);
         });
     },
@@ -27,7 +29,9 @@ module.exports = {
     },
     update: function (req, next) {
         Record.find(req.params.id, function () {
-            this.save_localized(req.locale, req.body, function () {
+            var data = req.body;
+            data.published = data.published ? 1 : 0;
+            this.save_localized(req.locale, data, function () {
                 next('redirect', path_to.admin_posts);
             });
         });
