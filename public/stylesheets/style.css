@@ -9,9 +9,23 @@ html, body {
   font: 14px "Verdana", "Helvetica Nueue", Arial, sans-serif;
 }
 
+h1 {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.67em 0px;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.83em 0px;
+}
+
 h3 {
   display: block;
-  font-size: 1,17em;
+  font-size: 1.17em;
   font-weight: bold;
   margin: 1em 0px;
 }
