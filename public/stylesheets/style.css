@@ -1,13 +1,45 @@
-body {
-  padding: 0px;
+* {
   margin: 0;
-  font: 14px "Verdana", "Helvetica Nueue", Arial, sans-serif;
-
+  padding: 0;
 }
 
-#wrapper {
+html, body {
+  padding: 0px;
+  height: 100%;
+  font: 14px "Verdana", "Helvetica Nueue", Arial, sans-serif;
+}
+
+h3 {
+  display: block;
+  font-size: 1,17em;
+  font-weight: bold;
+  margin: 1em 0px;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -40px;
   width: 750px;
+}
+
+.footer, .push {
+  height: 40px;
+}
+
+.footer {
+  padding-top: 5px;
   margin: 0 auto;
+  width: 720px;
+  font-size: 10px;
+  color: #333;
+  text-align: middle;
+}
+
+.footer img {
+  position: relative;
+  top: 3px;
 }
 
 .header {
@@ -34,7 +66,7 @@ body {
   clear: both;
 }
 
-.record h3.title, .record h3.title a, .record h3.title a:visited{
+.record h3.title, .record h3.title a, .record h3.title a:visited {
   color: #479;
   font-size: 17px;
   font-weight: 500;
@@ -76,25 +108,3 @@ body {
   font-size: 16px;
   font-weight: 700;
 }
-/*
-#footer div {
-  height: 100px;
-}
-
-#footer .left_bg {
-  background: url(http://static4.grsites.com/archive/textures/lgrey/lgrey041.jpg) top right;
-}
-
-#footer .right_bg {
-  background: url(http://static2.grsites.com/archive/textures/lgrey/lgrey043.jpg) top left repeat-x;
-  margin-left: 50%;
-}
-
-#footer .footer_center {
-  height: 80px;
-  background: black;
-  width: 500px;
-  margin: 0 auto;
-  margin-top: -100px;
-}
-*/

@@ -10,7 +10,7 @@
     <%- stylesheet_link_tag('style') %>
   </head>
   <body>
-    <div id="wrapper">
+    <div class="wrapper">
       <div class="header">
         <% if (locale == 'ru' ) { %>
           <h1><a href='/' title='Node. js — событийно-ориентированный фреймворк на движке V8 JavaScript'> Узел JS*</a></h1>
@@ -23,6 +23,7 @@
         <% } %>
       </div>
       <div class="content"><%- body %></div>
+      <div class="push"></div>
     </div>
     <script>
       wmd_options = {
@@ -30,5 +31,6 @@
       };
     </script>
     <script src='/javascripts/wmd/wmd.js'></script>
+    <div class="footer">Admin area</div>
   </body>
 </html>
