@@ -135,3 +135,8 @@ h3 {
   font-size: 16px;
   font-weight: 700;
 }
+
+pre code {
+  border: 1px solid #d7d7d7;
+  margin: 10px 0;
+}
