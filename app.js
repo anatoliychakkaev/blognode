@@ -55,7 +55,7 @@ app.configure('production', function(){
 
 // Controller
 
-require('express-on-railway').init(__dirname, app);
+require('../express-on-railway/lib/onrailway').init(__dirname, app);
 
 // Only listen on $ node app.js
 

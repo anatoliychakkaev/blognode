@@ -1,20 +1,18 @@
-function Record () {
-    if (!this.title) this.title = '';
-};
+var localized_fields = ['title', 'preview', 'content'],
+    locales          = ['ru', 'en'];
 
-var localized_fields = ['title', 'preview', 'content'], locales = ['ru', 'en'];
+var Record = describe('Record', function () {
+    property('title',   String);
+    property('preview', String);
+    property('content', String);
+    property('slug',    String);
+    property('published', Boolean);
+    property('created_at', Date);
 
-Record.attributes = {
-    title: 'string',
-    preview: 'string',
-    content: 'string',
-    slug: 'string',
-    published: 'int'
-};
-
-localized_fields.forEach(function (attr) {
-    locales.forEach(function (locale) {
-        Record.attributes[attr + '-' + locale] = Record.attributes[attr];
+    localized_fields.forEach(function (attr) {
+        locales.forEach(function (locale) {
+           property(attr + '-' + locale, String);
+        });
     });
 });
 
@@ -46,4 +44,3 @@ Record.prototype.save_localized = function (locale, data, callback) {
 Record.create_localized = function (locale, data, callback) {
     return Record.create(localize_data(locale, data), callback);
 };
-exports.Record = Record;
