@@ -16,12 +16,21 @@ var Record = describe('Record', function () {
     });
 });
 
+Record.prototype.disqusId = function () {
+    if (this.locale == 'ru') {
+        return this.id;
+    } else {
+        return this.id + 10000;
+    }
+};
+
 Record.prototype.link = function () {
     return this.id + '-' + (this.slug || this.title.toLowerCase().replace(/[^\sa-zа-я]/gi, '').replace(/\s+/g, '-'));
 };
 
 Record.prototype.localize = function (locale) {
     var post = this;
+    post.locale = locale;
     localized_fields.forEach(function (attr) {
         if (post[attr + '-' + locale]) {
             post[attr] = post[attr + '-' + locale];
