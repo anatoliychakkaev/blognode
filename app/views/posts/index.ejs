@@ -3,7 +3,7 @@
   <div class="side"><%- record.created_at.format('d mmm<br/>yyyy') %></div>
   <div class="content">
     <h3 class="title">
-      <a href='/<%= record.link() %>#disqus_thread' data-disqus-identifier="<%= record.disqusId() %>"><%- record.title %></a>
+      <a href='/<%= record.link() %>' data-disqus-identifier="<%= record.disqusId() %>"><%- record.title %></a>
     </h3>
     <div class="preview"><%- record.preview %></div>
     <a href='/<%= record.link() %>#disqus_thread' data-disqus-identifier="<%= record.disqusId() %>"></a>
